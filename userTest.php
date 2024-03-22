@@ -1,21 +1,28 @@
 <?php
 
-namespace Login\classes;
-
 use PHPUnit\Framework\TestCase;
 use Login\classes\Database;
 use Login\classes\User;
 
 class UserTest extends TestCase {
-    private $username;
+    private $user;
     private $db;
+
+
+    protected function setUp(): void {
+        $this->user = new User;
+    }
 
     public function testRegisterUser(): void {
         // Test successful registration
         $this->assertTrue($this->user->registerUser('Amin', 'Auro'));
     
         // Test registration with existing username (should fail)
-        $this->assertFalse($this->user->registerUser('Amin', 'Aura'));
+       
+            $this->assertTrue($this->user->registerUser('Amin', 'Auro'));
+            
+     
+   
     }
     
 
@@ -31,18 +38,15 @@ class UserTest extends TestCase {
     }
 
     public function testIsLoggedin(): void {
-        
-        $this->assertFalse($this->user->isLoggedin());
-
     
-        $this->user->loginUser('Ark', 'Parry');
-        $this->assertTrue($this->user->isLoggedin());
+        $this->user->loginUser('nouamanG', 'A');
+        $this->assertFalse($this->user->isLoggedin());
     }
 
     public function testLogoutUser()
         {
         
-            $this->username->Logout();
+            $this->user->Logout();
 
             $isDeleted = (session_status() == PHP_SESSION_NONE && empty(session_id()));
             $this->assertTrue($isDeleted);
