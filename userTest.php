@@ -12,23 +12,23 @@ class UserTest extends TestCase {
 
     public function testRegisterUser(): void {
         // Test successful registration
-        $this->assertTrue($this->user->registerUser('nu', 'Auro'));
+        $this->assertTrue($this->user->registerUser('Amin', 'Auro'));
     
         // Test registration with existing username (should fail)
-        $this->assertFalse($this->user->registerUser('nu', 'Aura'));
+        $this->assertFalse($this->user->registerUser('Amin', 'Aura'));
     }
     
 
     public function testLoginUser(): void {
         
-        $this->assertTrue($this->user->loginUser('nu', 'G'));
+        $this->assertTrue($this->user->loginUser('Amin', 'G'));
 
         
-        $this->assertFalse($this->user->loginUser('nu', 'T'));
+        $this->assertFalse($this->user->loginUser('Amin', 'T'));
 
         
-        $this->assertFalse($this->user->loginUser('nuu', '5'));
-    }    
+        $this->assertFalse($this->user->loginUser('IDK', '5'));
+    }
 
     public function testIsLoggedin(): void {
         
